@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FMD • Festival Manacá Dance</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- PDF -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <!-- Fundo: redes conectadas -->
+  <canvas id="bg"></canvas>
+
+  <!-- Glow blobs -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#topo">
+        <div class="brand__logo">
+          <img src="logo-fmd.png" alt="FMD"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+          <span class="brand__fallback" style="display:none">FMD</span>
+        </div>
+        <div class="brand__text">
+          <strong>FMD</strong>
+          <span>Festival Manacá Dance</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#conceito">Conceito</a>
+        <a href="#categoria">Categoria</a>
+        <a href="#cronograma">Cronograma</a>
+        <a href="#premiacao">Premiação</a>
+        <a href="#faq">FAQ</a>
+        <a href="#coordenacao" class="nav__coord" onclick="ativarCoordenacao(event)">Coordenação</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" type="button" onclick="ativarCoordenacao(event)">Coordenação</button>
+        <button class="btn btn--primary" type="button" onclick="openModal()">Inscreva-se</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="pill">
+            <span class="pill__dot"></span>
+            <span>1ª Edição • ORIGEM — O ESPETÁCULO DA DANÇA • 2026</span>
+          </div>
+
+          <h1 class="hero__title">FMD • FESTIVAL MANACÁ DANCE</h1>
+
+          <p class="hero__subtitle">
+            Um festival <strong>cinematográfico</strong> onde a dança vira narrativa.
+            Categoria única <strong>Livre — Musical</strong>. Um dia de mega evento, 10 grupos e 5 premiações.
+          </p>
+
+          <div class="hero__cta">
+            <button class="btn btn--primary btn--big" type="button" onclick="openModal()">Inscrever minha companhia</button>
+            <a class="btn btn--ghost btn--big" href="#como">Entender o fluxo</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>10</strong>
+              <span>Grupos esperados</span>
+            </div>
+            <div class="stat">
+              <strong>5</strong>
+              <span>Premiações</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>Dia de mega evento</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero__panel">
+          <div class="panel__top">
+            <div>
+              <h2>ORIGEM</h2>
+              <p>Edição 2026 • Manacapuru — AM</p>
+            </div>
+            <div class="badge">FMD</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="rows">
+            <div class="row"><span>🎭 Categoria</span><strong>Livre — Musical</strong></div>
+            <div class="row"><span>🗓️ Evento</span><strong>1 dia</strong></div>
+            <div class="row"><span>🏆 Premiações</span><strong>3 + 2 inéditos</strong></div>
+            <div class="row"><span>📄 Ficha</span><strong>PDF automático</strong></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button class="btn btn--primary" style="width:100%" type="button" onclick="openModal()">
+            Fazer inscrição agora
+          </button>
+
+          <p class="mini">
+            Ao confirmar, você baixa a ficha em PDF e aparece a mensagem:
+            <strong>“SEJA BEM-VINDO AO ESPETÁCULO”</strong>.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="head">
+          <h2>Sobre o FMD</h2>
+          <p>
+            O Festival Manacá Dance nasce para ser <strong>grande</strong>:
+            palco, narrativa, impacto cênico e emoção. Aqui o musical é levado a sério.
+          </p>
+        </div>
+
+        <div class="grid3">
+          <article class="card">
+            <h3>🎬 Estética cinematográfica</h3>
+            <p>Roxo e preto com brilho, camadas e presença de show. Cara de festival de verdade.</p>
+          </article>
+          <article class="card">
+            <h3>🎭 Musical completo</h3>
+            <p>História + personagens + intenção + dança. O público entende o enredo no palco.</p>
+          </article>
+          <article class="card">
+            <h3>🏆 Reconhecimento</h3>
+            <p>5 premiações: 3 tradicionais + 2 inéditas para destacar impacto e inovação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEITO -->
+    <section class="section" id="conceito">
+      <div class="container">
+        <div class="head">
+          <h2>Conceito: ORIGEM</h2>
+          <p>O começo de tudo — criação, natureza, humanidade. Um espetáculo onde a dança conta a origem.</p>
+        </div>
+
+        <div class="split">
+          <div class="note">
+            <h3>Manifesto FMD</h3>
+            <p>
+              Dançar é contar. Criar mundo. Fazer sentir. No FMD, coreografia é linguagem e o palco é narrativa.
+            </p>
+          </div>
+          <div class="note">
+            <h3>O que o jurado enxerga</h3>
+            <p>
+              Técnica + coerência + construção cênica. Entradas, clímax, transições e final com impacto.
+            </p>
+          </div>
+        </div>
+
+        <div class="ctaStrip">
+          <div>
+            <strong>Pronto para colocar seu musical no palco?</strong>
+            <span>Inscreva a companhia e gere a ficha em PDF na hora.</span>
+          </div>
+          <button class="btn btn--primary" type="button" onclick="openModal()">Inscrever</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIA -->
+    <section class="section" id="categoria">
+      <div class="container">
+        <div class="head">
+          <h2>Categoria</h2>
+          <p>Categoria única: <strong>Livre — Musical</strong> (conforme edital). Criatividade com presença e história.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card">
+            <h3>🧠 Roteiro e intenção</h3>
+            <p>Não é “dança solta”. Precisa de intenção narrativa e coerência cênica.</p>
+          </article>
+          <article class="card">
+            <h3>🎶 Trilha como dramaturgia</h3>
+            <p>A música conduz emoção, ritmo, transição e clímax — ela conta junto.</p>
+          </article>
+          <article class="card">
+            <h3>🔥 Impacto de palco</h3>
+            <p>Presença, figurino, expressão, ocupação de palco e energia coletiva.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="section" id="como">
+      <div class="container">
+        <div class="head">
+          <h2>Como funciona a inscrição</h2>
+          <p>Preencher → gerar PDF → mensagem final → controle interno da coordenação.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="step">
+            <div class="step__num">1</div>
+            <div>
+              <h4>Preencha a ficha</h4>
+              <p>Companhia, responsável, WhatsApp, espetáculo e resumo do musical.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <div>
+              <h4>PDF automático</h4>
+              <p>Baixa a ficha pronta, com a logo no topo direito.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <div>
+              <h4>Mensagem final</h4>
+              <p>Após confirmar: <strong>“SEJA BEM-VINDO AO ESPETÁCULO”</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__num">4</div>
+            <div>
+              <h4>Painel da coordenação</h4>
+              <p>Controle interno: ver inscritos no próprio site com login/senha.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="section" id="cronograma">
+      <div class="container">
+        <div class="head">
+          <h2>Cronograma do mega evento</h2>
+          <p>Estrutura em 1 dia (você pode ajustar horários depois).</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card">
+            <h3>🕘 Manhã</h3>
+            <p>Credenciamento, passagem de palco, alinhamentos e ajustes finais.</p>
+          </article>
+          <article class="card">
+            <h3>🕒 Tarde</h3>
+            <p>Apresentações oficiais, registros e pontuação técnica.</p>
+          </article>
+          <article class="card">
+            <h3>🌙 Noite</h3>
+            <p>Final, premiação, fotos oficiais e encerramento com impacto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIAÇÃO -->
+    <section class="section" id="premiacao">
+      <div class="container">
+        <div class="head">
+          <h2>Premiação</h2>
+          <p>5 premiações: <strong>3 tradicionais</strong> + <strong>2 inéditos</strong>.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card prize">
+            <h3>🥇 1º Lugar</h3>
+            <p>Maior pontuação geral: técnica + musical + impacto.</p>
+          </article>
+          <article class="card prize">
+            <h3>🥈 2º Lugar</h3>
+            <p>Excelência artística e consistência cênica.</p>
+          </article>
+          <article class="card prize">
+            <h3>🥉 3º Lugar</h3>
+            <p>Reconhecimento do conjunto e presença de palco.</p>
+          </article>
+        </div>
+
+        <div class="split">
+          <div class="note">
+            <h3>⭐ Prêmios inéditos</h3>
+            <p>
+              Espaço para reconhecer o diferencial do FMD: narrativa, inovação, impacto cênico, melhor personagem, etc.
+            </p>
+          </div>
+          <div class="note">
+            <h3>📌 Transparência</h3>
+            <p>Inscrição gera PDF e salva no controle interno da coordenação (neste navegador).</p>
+          </div>
+        </div>
+
+        <div class="ctaStrip">
+          <div>
+            <strong>Quer garantir sua vaga entre os 10 grupos?</strong>
+            <span>Faça a inscrição e baixe a ficha agora.</span>
+          </div>
+          <button class="btn btn--primary" type="button" onclick="openModal()">Inscrever</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="head">
+          <h2>FAQ</h2>
+          <p>Dúvidas rápidas para não travar o processo.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary>O PDF baixa na hora?</summary>
+            <p>Sim. Ao confirmar a inscrição, o PDF é gerado e baixado automaticamente.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Como vejo os inscritos?</summary>
+            <p>Na aba Coordenação: clique, faça login e o painel aparece com a lista completa.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Por que o controle é “interno”?</summary>
+            <p>Sem servidor, o controle fica neste navegador (localStorage). É um painel de gestão simples e funcional.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Posso mudar textos e prêmios?</summary>
+            <p>Sim. É só editar os títulos/descrições no HTML, sem mexer no sistema.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- COORDENAÇÃO -->
+    <section class="section" id="coordenacao">
+      <div class="container">
+        <div class="head">
+          <h2>Coordenação</h2>
+          <p>Área restrita para controle interno das inscrições.</p>
+        </div>
+
+        <div class="glass cardWide" id="coordLoginBox">
+          <div class="formGrid">
+            <label>
+              <span>Login</span>
+              <input id="coordUser" placeholder="Digite o login" autocomplete="off" value="">
+            </label>
+            <label>
+              <span>Senha</span>
+              <input id="coordPass" type="password" placeholder="Digite a senha" autocomplete="off" value="">
+            </label>
+          </div>
+          <div class="formRow">
+            <div id="coordErr" class="error" style="display:none"></div>
+            <button class="btn btn--primary" type="button" onclick="loginCoord(event)">Entrar</button>
+          </div>
+        </div>
+
+        <div class="glass cardWide" id="coordPanel" style="display:none">
+          <div class="panelBar">
+            <div>
+              <strong>Inscritos</strong>
+              <span id="coordStatus">Total: 0</span>
+            </div>
+            <div class="panelBtns">
+              <button class="btn btn--ghost" type="button" onclick="reloadCoord()">Atualizar</button>
+              <button class="btn btn--ghost" type="button" onclick="downloadCSV()">Baixar CSV</button>
+              <button class="btn btn--ghost" type="button" onclick="clearList()">Limpar</button>
+              <button class="btn btn--primary" type="button" onclick="logoutCoord()">Sair</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="tableWrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Companhia</th>
+                  <th>Responsável</th>
+                  <th>WhatsApp</th>
+                  <th>Espetáculo</th>
+                </tr>
+              </thead>
+              <tbody id="coordBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__title">FMD • Festival Manacá Dance</div>
+          <div class="footer__sub">ORIGEM — O ESPETÁCULO DA DANÇA • Edição 2026</div>
+        </div>
+        <div class="footer__cta">
+          <button class="btn btn--primary" type="button" onclick="openModal()">Inscrição</button>
+          <a class="btn btn--ghost" href="#topo">Topo</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODAL INSCRIÇÃO -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" onclick="closeModal()"></div>
+
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Inscrição FMD">
+      <div class="modal__head">
+        <div>
+          <h3>Inscrição • FMD (Livre — Musical)</h3>
+          <p>Ao confirmar, o PDF baixa automaticamente.</p>
+        </div>
+        <button class="iconBtn" type="button" onclick="closeModal()">✕</button>
+      </div>
+
+      <form class="modal__body" id="form">
+        <div class="modal__grid">
+          <label>
+            <span>Nome da companhia *</span>
+            <input name="companhia" required>
+          </label>
+          <label>
+            <span>Responsável geral *</span>
+            <input name="responsavel" required>
+          </label>
+          <label>
+            <span>WhatsApp *</span>
+            <input name="whats" required>
+          </label>
+          <label>
+            <span>E-mail</span>
+            <input name="email" type="email">
+          </label>
+
+          <label class="full">
+            <span>Nome do espetáculo / musical *</span>
+            <input name="titulo" required>
+          </label>
+
+          <label class="full">
+            <span>Resumo do musical (5–10 linhas) *</span>
+            <textarea name="resumo" rows="6" required></textarea>
+          </label>
+
+          <label class="full">
+            <span>Materiais cênicos previstos (opcional)</span>
+            <input name="materiais" placeholder="Ex.: tecidos, cadeiras, objetos…">
+          </label>
+
+          <label>
+            <span>Fogos frios? *</span>
+            <select name="fogos" required>
+              <option value="Não" selected>Não</option>
+              <option value="Sim">Sim</option>
+            </select>
+          </label>
+
+          <label>
+            <span>IA na trilha? *</span>
+            <select name="ia" required>
+              <option value="Não" selected>Não</option>
+              <option value="Sim">Sim</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" required>
+          <span>Confirmo concordância com o edital do FMD 2026.</span>
+        </label>
+
+        <div class="modal__actions">
+          <button class="btn btn--ghost" type="button" onclick="closeModal()">Cancelar</button>
+          <button class="btn btn--primary" type="submit">Confirmar inscrição</button>
+        </div>
+
+        <div class="toast" id="toast" style="display:none"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
